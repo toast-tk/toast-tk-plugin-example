@@ -1,12 +1,12 @@
 # TOAST TK - Agent Plugin Example
 
-This is an example of a web action adapter plugin.
+This is an example of a web action adapter plugin.  
 Plugins are used to extend the agent test execution vocabulary and SUT (System Under Test) driving capabilities.
 
 # How to create a plugin
 
-1. Create a new maven project
-2. Add a dependency to both the adapter and the agent api
+### Create a new maven project  
+### Add a dependency to both the adapter and the agent api
 ```xml
 	<dependency>
 		<groupId>io.toast-tk</groupId>
@@ -18,9 +18,9 @@ Plugins are used to extend the agent test execution vocabulary and SUT (System U
 		<artifactId>toast-tk-agent-api</artifactId>
 		<version>0.1.5-SNAPSHOT</version>
 	</dependency>
-```
-3. Create a class that extends IAgentPlugin (i.e: my.first.plugin.MyAgentPlugin)
-4. Bind your actions adapters (example from PluginExample.java) 
+```  
+### Create a class that extends IAgentPlugin (i.e: my.first.plugin.MyAgentPlugin)  
+### Bind your actions adapters (example from PluginExample.java)   
 ```java
 	@Override
 	public Collection<? extends Module> getModules() {
@@ -32,19 +32,19 @@ Plugins are used to extend the agent test execution vocabulary and SUT (System U
 		};
 		return Arrays.asList(module);
 	}
-```
-5. Add the plugin service locator to your project META-INF folder
+```  
+### Add the plugin service locator to your project META-INF folder  
 ```
 	src/main/resources
 	 |__ META-INF
 	 |____ services
 	 |______ io.toast.tk.plugin.IAgentPlugin
 ```
-6. Reference your plugin Class Qualifid name in io.toast.tk.plugin.IAgentPlugin file
+### Reference your plugin Class Qualifid name in io.toast.tk.plugin.IAgentPlugin file
 ```
 my.first.plugin.MyAgentPlugin
 ```
-7. Package a standalone version of your plugin:
+### Package a standalone version of your plugin:
 - Use maven-assembly plugin (the plugin must include it's runtime dependencies)
 - assembly.xml example:
 ```xml
@@ -90,7 +90,8 @@ my.first.plugin.MyAgentPlugin
 </plugin>
 ```
 
-8. You're done, the assembled jar can be copied to the agent plugin directory.
+Enjoy, you're done !  
+The assembled jar (here: /target/toast-tk-example-plugin.jar) can be copied to your agent plugin directory.
 
 # Contribution
 
